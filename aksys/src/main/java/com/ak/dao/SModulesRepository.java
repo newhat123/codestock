@@ -5,7 +5,7 @@ import com.ak.entity.SModules;
 
 /**
  * @author <a href="mailto:sosowego@126.com">hanyouqing</a>
- * @date 2015-08-26
+ * @date 2016-01-03
  *
  * @version 1.0
  */

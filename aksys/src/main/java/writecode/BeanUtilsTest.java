@@ -27,10 +27,7 @@ public class BeanUtilsTest {
    
    	List<Class> list = new ArrayList<Class>();
    
-   	list.add(SModules.class);
-   	list.add(SRole.class);
-   	list.add(SRoldef.class);
-   	list.add(SRolepower.class);
+   	list.add(SModules.class);   	
    
    	for (Class c : list) {			
    		BeanUtils beanUtils = new BeanUtils();

@@ -10,6 +10,5 @@
 	<table-filter match-catalog="akdbs" match-name="s_user" />
 	<table-filter match-catalog="akdbs" match-name="i_loginfo" />
 	<table-filter match-catalog="akdbs" match-name="s_depart" />
-	<table-filter match-catalog="akdbs" match-name="s_human" />
-	
+	<table-filter match-catalog="akdbs" match-name="s_human" />	
 </hibernate-reverse-engineering>
