@@ -1,5 +1,5 @@
 package com.ak.entity;
-// Generated 2015-8-27 9:14:29 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-1-3 8:43:31 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,7 +49,7 @@ public class SRole implements java.io.Serializable {
 		this.did = did;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "use_did", nullable = false)
 	public SUser getSUser() {
 		return this.SUser;

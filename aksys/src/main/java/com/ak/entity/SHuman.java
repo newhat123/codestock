@@ -1,5 +1,5 @@
 package com.ak.entity;
-// Generated 2015-8-26 10:44:15 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-1-3 8:52:22 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,6 +25,7 @@ public class SHuman implements java.io.Serializable {
 	private String depname;
 	private Integer ftype;
 	private Date borth;
+	private Integer orgDid;
 
 	public SHuman() {
 	}
@@ -33,13 +34,14 @@ public class SHuman implements java.io.Serializable {
 		this.depDid = depDid;
 	}
 
-	public SHuman(int depDid, String fname, String sex, String depname, Integer ftype, Date borth) {
+	public SHuman(int depDid, String fname, String sex, String depname, Integer ftype, Date borth, Integer orgDid) {
 		this.depDid = depDid;
 		this.fname = fname;
 		this.sex = sex;
 		this.depname = depname;
 		this.ftype = ftype;
 		this.borth = borth;
+		this.orgDid = orgDid;
 	}
 
 	@Id
@@ -107,6 +109,15 @@ public class SHuman implements java.io.Serializable {
 
 	public void setBorth(Date borth) {
 		this.borth = borth;
+	}
+
+	@Column(name = "org_did")
+	public Integer getOrgDid() {
+		return this.orgDid;
+	}
+
+	public void setOrgDid(Integer orgDid) {
+		this.orgDid = orgDid;
 	}
 
 }

@@ -1,5 +1,5 @@
 package com.ak.entity;
-// Generated 2015-8-26 10:44:15 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-1-3 8:52:22 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,23 +16,19 @@ import javax.persistence.Table;
 public class SDepart implements java.io.Serializable {
 
 	private Integer did;
-	private int orgDid;
 	private String fname;
 	private Integer ftype;
 	private String bref;
+	private Integer orgDid;
 
 	public SDepart() {
 	}
 
-	public SDepart(int orgDid) {
-		this.orgDid = orgDid;
-	}
-
-	public SDepart(int orgDid, String fname, Integer ftype, String bref) {
-		this.orgDid = orgDid;
+	public SDepart(String fname, Integer ftype, String bref, Integer orgDid) {
 		this.fname = fname;
 		this.ftype = ftype;
 		this.bref = bref;
+		this.orgDid = orgDid;
 	}
 
 	@Id
@@ -45,15 +41,6 @@ public class SDepart implements java.io.Serializable {
 
 	public void setDid(Integer did) {
 		this.did = did;
-	}
-
-	@Column(name = "org_did", nullable = false)
-	public int getOrgDid() {
-		return this.orgDid;
-	}
-
-	public void setOrgDid(int orgDid) {
-		this.orgDid = orgDid;
 	}
 
 	@Column(name = "fname", length = 40)
@@ -81,6 +68,15 @@ public class SDepart implements java.io.Serializable {
 
 	public void setBref(String bref) {
 		this.bref = bref;
+	}
+
+	@Column(name = "org_did")
+	public Integer getOrgDid() {
+		return this.orgDid;
+	}
+
+	public void setOrgDid(Integer orgDid) {
+		this.orgDid = orgDid;
 	}
 
 }
