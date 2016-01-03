@@ -1,0 +1,67 @@
+##create bean daoImpl,this is a class
+package $!{bean.beanDaoImplUrl};
+import $!{bean.beanDaoUrl}.$!{bean.name}Repository;
+import $!{bean.beanUrl};
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * @author <a href="mailto:$!{annotation.authorMail}">$!{annotation.authorName}</a>
+ * @date $!{annotation.date}
+ *
+ * @version $!{annotation.version}
+ */
+ 
+@Service("$!{bean.lowerName}Service")
+public class $!{bean.beanImplName}{
+
+    @Autowired
+	private $!{bean.beanDaoName} $!{bean.lowerDaoName};
+	
+	public List<$!{bean.name}> getAll() {
+		List<$!{bean.name}> list = $!{bean.lowerDaoName}.findAll();
+		return list;
+	}
+	
+	public void deleteById(Integer id) {
+		 $!{bean.lowerDaoName}.delete(id);
+	}
+	
+	public Page<$!{bean.name}> getListWithPaging(int pages, int pageSize) {
+		Pageable pageAble = new PageRequest(pages, pageSize);
+		Page<$!{bean.name}> page = $!{bean.lowerDaoName}.findAll(pageAble);
+		return page;
+	}
+	
+	public void updateById($!{bean.name} $!{bean.lowerName}) {
+		$!{bean.lowerDaoName}.save($!{bean.lowerName});
+	}
+	
+	public $!{bean.name} save$!{bean.name}($!{bean.name} $!{bean.lowerName}){
+		try {
+		  return $!{bean.lowerDaoName}.save($!{bean.lowerName});
+			
+		} catch (Exception ex) {
+			System.out.println("执行出错哦：" + ex.getMessage());		
+			return null;	
+		}
+	}
+	
+	public Page<$!{bean.name}> getListWithPaging(Pageable pageAble) {
+		Page<$!{bean.name}> page = $!{bean.lowerDaoName}.findAll(pageAble);
+		return page;
+	}
+	
+	public $!{bean.name} getById(Integer id) {
+		return $!{bean.lowerDaoName}.findOne(id);
+
+	}
+
+}

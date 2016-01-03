@@ -1,0 +1,15 @@
+##create bean dao,this is a interface
+package $!{bean.beanDaoUrl};
+import org.springframework.data.jpa.repository.JpaRepository;  
+import org.springframework.data.jpa.repository.Query;
+import $!{bean.beanUrl};
+
+/**
+ * @author <a href="mailto:$!{annotation.authorMail}">$!{annotation.authorName}</a>
+ * @date $!{annotation.date}
+ *
+ * @version $!{annotation.version}
+ */
+public interface $!{bean.name}Repository extends JpaRepository<$!{bean.name},Integer> {
+
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:replace="header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
+<!-- 包含调用摄像头的js代码 -->
+<script type="text/javascript" src="../static/js/mapp.js"  th:src="@{/js/mapp.js}"></script>
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/user.css}" />
+</head>
+<body>
+	<!--内含文件上传测试代码，需指定enctype="multipart/form-data" input的name可以在Controller中直接使用提取文件。-->
+	<form action="#" th:action="@{/user}" th:object="${user}" enctype="multipart/form-data" method="post">
+   <table  >
+    <tr>
+        <td  ><div><input type="text" name="fname"  th:field="*{fname}" th:class="${#fields.hasErrors('fname')}? fieldError"/>
+        <p th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}">Incorrect date</p>
+        </div></td>
+              
+    </tr>
+     <tr>
+        <td  ><label for="password">姓名</label><input type="text" name="password"  th:field="*{password}"/></td>      
+    </tr>
+     <tr>
+        <td  ><input type="text" name="email"  th:field="*{email}"/></td>      
+    </tr>  
+    </table>
+    <input type="file" name="shangchuan" />
+    <p th:text="#{addrow}">addrow</p>
+    <input type="submit" name="save" value="经提交" th:value="#{submit}"  />
+    <input type="submit" name="addrow" value="上传" th:value="#{addrow}" />
+</form>   
+	<br/>
+<a href="#" onclick="$camera.invokeCamera()">调用摄像头</a>	
+	<br/>
+	<div th:include="footer :: copy"></div>
+</body>
+</html>
