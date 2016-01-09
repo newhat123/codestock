@@ -1,13 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title>Hello World!</title>
-    </head>
-    <body>
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta th:replace="header::[/meta]" />
+<link th:replace="header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
+<title>Hello World!</title>
+
+</head>
+<body>
+	<div class="container">
+		<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" />
+		</form>
+		<div class="page-header">
+			<h1>案例:列嵌套</h1>
+		</div>
+		<div class="row">
+			<div class="col-xs-9">
+				<div class="row">
+					<div class="col-xs-6">Level 2:.col-xs-6</div>
+					<div class="col-xs-6">Level 2:.col-xs-6</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3">Level 3: .col-xs-3</div>
+					<div class="col-xs-6">Level 3: .col-xs-6</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div th:include="footer :: copy"></div>
+</body>
 </html>

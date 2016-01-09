@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="UTF-8"/>
+<meta th:replace="header::[/meta]" />
+<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+	type="text/css" media="all" href="../static/css/gtvg.css" />
 <title>Insert title here</title>
 </head>
-<body>
-Welcome to Spring technology page!
+<body>Welcome to Spring technology page!
+
+<div th:include="footer :: copy"></div>
 </body>
 </html>

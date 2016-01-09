@@ -3,41 +3,44 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-<title>Spring Security Example</title>
+<meta th:replace="header::[/meta]" />
+<link th:replace="header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/login.css}" />
 
-<link rel="stylesheet" type="text/css" media="all"  
-           th:href="@{/css/bootstrap.min.css}" />
-<script type="text/javascript"  th:src="@{/js/jquery-1.11.3.min.js}"></script>
-<script type="text/javascript"  th:src="@{/js/bootstrap.min.js}"></script>
+<title>Spring Security Example</title>
 
 
 </head>
 <body>
-	<div th:if="${param.error}">Invalid username and password.</div>
-	<div th:if="${param.logout}">You have been logged out.</div>
-	<div th:if="${#httpServletRequest.remoteUser != null}">
-		<p th:text="${#httpServletRequest.remoteUser}">sample_user</p>
+	<div class="container">
+		<div th:if="${param.error}">Invalid username and password.</div>
+		<div th:if="${param.logout}">You have been logged out.</div>
+		<div th:if="${#httpServletRequest.remoteUser != null}">
+			<p th:text="${#httpServletRequest.remoteUser}">sample_user</p>
+		</div>
+		<form class="form-signin" th:action="@{/login}" method="post">
+			<h2 class="form-signin-heading">请登录</h2>
+			<input type="text" id="username" name="username" class="form-control"
+				placeholder="用户名" required="required" autofocus="autofocus" th:value="admin" /> 
+			<input
+				type="password" id="password" name="password" class="form-control"
+				placeholder="密码" required="required" th:value="111"/>
+			<div class="checkbox">
+				<label> <input type="checkbox" name="remember-me" value="true"
+				th:checked="checked" />
+					记住我
+				</label>
+			</div>			
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			<br/>
+			<div class="row">
+			<div class="col-xs-6"><a th:href="@{/orgreg}">注册一个机构</a></div>
+			<div class="col-xs-6"><a th:href="@{/userreg}">注册一个用户</a></div>
+			</div>
+		</form>
 	</div>
-	<form th:action="@{/login}" method="post">
-		<div>
-			<label> User Name : <input type="text" name="username" />
-			</label>
-		</div>
-		<div>
-			<label> Password: <input type="password" name="password" />
-			</label>
-		</div>
-		<div>
-			<input type="submit" value="Sign In" />
-		</div>
-		<input type="checkbox" name="remember-me" value="true"
-			th:checked="checked" />
-		<p>Remember me</p>
-	</form>
+<div th:include="footer :: copy"></div>
 </body>
 </html>
 

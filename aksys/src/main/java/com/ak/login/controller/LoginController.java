@@ -61,6 +61,18 @@ public class LoginController {
    	return "login";
    }
    
+   @RequestMapping("/orgreg")
+   public String orgreg(HttpServletRequest request) {
+       //System.out.println("Login from hear!");
+   	return "orgreg";
+   }
+   
+   @RequestMapping("/userreg")
+   public String userreg(HttpServletRequest request) {
+       //System.out.println("Login from hear!");
+   	return "userreg";
+   }
+   
     
    @RequestMapping("/hello")
    public String hello() {
