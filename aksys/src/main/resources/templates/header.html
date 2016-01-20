@@ -4,3 +4,16 @@
 <script type="text/javascript"  th:src="@{/js/jquery-1.11.3.min.js}"></script>
 <script type="text/javascript"  th:src="@{/js/bootstrap.min.js}"></script>
 <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}" />
+
+<ul th:fragment="Navibar" class="nav nav-tabs">		
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Profile</a></li>
+		<li><a href="#">Messages</a></li>
+		<li class="dropdown"><a class="dropdown-toggle"
+			data-toggle="dropdown" href="#"> 系统设置 <span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">部门管理</a></li>				
+				<li><a href="#">Messages</a></li>
+			</ul></li>
+</ul>

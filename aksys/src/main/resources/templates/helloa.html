@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta th:replace="header::[/meta]" />
+<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+	type="text/css" media="all" href="../static/css/gtvg.css" />
+<title>Insert title here</title>
+</head>
+<!-- 这是用来测试页面参数传递用的 -->
+<body>
+	This is my hello page.
+	<p th:text="'name:'+${name}">Name area</p>
+	<p th:text="'value:'+${string}">Value area</p>
+	<div th:include="footer :: copy"></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta th:replace="header::[/meta]" />
+<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+	type="text/css" media="all" href="../static/css/gtvg.css" />
+<title>机构注册</title>
+</head>
+<body>
+	<ul class="nav nav-tabs" th:include="header :: Navibar">
+	</ul>
+	<br />
+	<br />
+
+	<table class="table">
+		<tr th:each="dep : ${departs}">
+			<td th:text="${dep.did}" style="display: none">...</td>
+			<td th:text="${dep.fname}">...</td>
+			<td th:text="${dep.ftype}">...</td>
+			<td th:text="${dep.bref}">...</td>
+			<td><a href="#" onclick="P(this);">编辑</a></td>
+			<!--  	<td><a th:href="@{/depmg?(edit=${depStat.count})}">编辑</a></td>  -->
+		</tr>
+	</table>
+
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary btn-lg"
+		data-toggle="modal" data-target="#myModal">Launch demo modal
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<form class="form-signin" th:action="@{/depmg}" method="post">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+					</div>
+					<div class="modal-body">
+
+						<input type="text" id="eddid" name="eddid"
+							class="form-control" style="display:none"/> 
+						<input type="text" id="edfname"
+							name="edfname" class="form-control" placeholder="科室名称"
+							required="required" autofocus="autofocus"/>		
+						<input type="text" id="edftype"
+							name="edftype" class="form-control" placeholder="科室类型"
+							/>	
+						<input type="text" id="edbref"
+							name="edbref" class="form-control" placeholder="拼音缩写"
+							 />
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div th:include="footer :: copy"></div>
+</body>
+<script type="text/javascript">
+	function P(o) {
+		//alert($(o).closest('td').prev().html());
+		//alert($(o).parent().prev().html());
+		$("#eddid").val($(o).closest('td').prev().prev().prev().prev().html());
+		$("#edfname").val($(o).closest('td').prev().prev().prev().html());
+		$("#edftype").val($(o).closest('td').prev().prev().html());
+		$("#edbref").val($(o).closest('td').prev().html());
+
+		$('#myModal').modal('show');
+	}
+</script>
+
+</html>

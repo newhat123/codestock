@@ -11,6 +11,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.view.AjaxThymeleafViewResolver;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import com.ak.pub.DynamicDataSource;
 
@@ -85,6 +89,41 @@ public class RootConfig {
    	rBundleMessageSource.setBasename("Messages");
    	return rBundleMessageSource;
    }
+   
+//   @Bean
+//   public ServletContextTemplateResolver templateResolver(){
+//	   ServletContextTemplateResolver sc=new ServletContextTemplateResolver();
+//	   sc.setPrefix("/templates/");
+//	   sc.setSuffix(".html");
+//	   sc.setTemplateMode("HTML5");
+//	   sc.setCharacterEncoding("UTF-8");
+//	   return sc;
+//   }
+//   
+//   @Bean
+//   public SpringTemplateEngine templateEngine(){
+//	   SpringTemplateEngine st=new SpringTemplateEngine();
+//	   st.setTemplateResolver(templateResolver());
+//	   return st;
+//   }
+//   
+//   
+//   @Bean
+//   public ThymeleafViewResolver thymeleafViewResolver(){
+//	   ThymeleafViewResolver tv=new ThymeleafViewResolver();
+//	   tv.setTemplateEngine(templateEngine());
+//	   tv.setCharacterEncoding("UTF-8");
+//	   return tv;
+//   }
+//   
+//   
+//   @Bean
+//   public AjaxThymeleafViewResolver ajaxThymeleafViewResolver(){
+//	   AjaxThymeleafViewResolver av=new AjaxThymeleafViewResolver();
+//	   av.setTemplateEngine(templateEngine());	   
+//	   return av;
+//   }
+   
    
    
 //   @Bean

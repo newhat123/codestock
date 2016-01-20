@@ -1,5 +1,5 @@
 package com.ak.entity;
-// Generated 2016-1-3 9:10:50 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-1-10 8:48:49 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,12 +17,12 @@ public class SRolepower implements java.io.Serializable {
 
 	private Integer did;
 	private int rolDid;
-	private int modDid;
+	private String modDid;
 
 	public SRolepower() {
 	}
 
-	public SRolepower(int rolDid, int modDid) {
+	public SRolepower(int rolDid, String modDid) {
 		this.rolDid = rolDid;
 		this.modDid = modDid;
 	}
@@ -48,12 +48,12 @@ public class SRolepower implements java.io.Serializable {
 		this.rolDid = rolDid;
 	}
 
-	@Column(name = "mod_did", nullable = false)
-	public int getModDid() {
+	@Column(name = "mod_did", nullable = false, length = 40)
+	public String getModDid() {
 		return this.modDid;
 	}
 
-	public void setModDid(int modDid) {
+	public void setModDid(String modDid) {
 		this.modDid = modDid;
 	}
 
