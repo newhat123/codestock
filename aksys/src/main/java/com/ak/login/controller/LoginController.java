@@ -90,20 +90,7 @@ public class LoginController {
 			}
 		
 		return "depmg";
-	}
-
-	// @Autowired
-	// @RequestMapping("/depmg")
-	// public String depmg(@ModelAttribute("departs") TransObj departs) {
-	//
-	// SDepartService sd = (SDepartService)
-	// Appctx.ctx.getBean("sdepartService");
-	// Page<SDepart> pager = sd.getListWithPaging(0, 2);
-	// departs.setList(pager.getContent());
-	//
-	//
-	// return "depmg1";
-	// }
+	}	
 
 	@RequestMapping("/orgreg")
 	public String orgreg(HttpServletRequest request) {
@@ -214,67 +201,5 @@ public class LoginController {
 
 		return "redirect:/user";
 	}
-	
-	   @RequestMapping(value = "/adddep", method = RequestMethod.POST)  
-	   @ResponseBody  
-	   public Map<String, String> addUser(@RequestBody SDepart model) {  	    
-	     Map<String, String> map = new HashMap<String, String>(1);  
-	     map.put("success", "true");  
-	     return map;  
-	   } 
-	   
-	   /**
-		   * ajax请求不需要返回页面，只需要得到response中的数据即可，所以方法签名为void即可
-		   * 
-		   * @param request
-		   * @param response 
-		   */
-		  @RequestMapping(value = "/ajax", method = RequestMethod.POST)
-		  public void ajaxDatas(HttpServletRequest request, HttpServletResponse response) {
-			System.out.println("Entered");
-		    String jsonResult = getJSONString(request);
-		    renderData(response, jsonResult);
-		    
-		  }
-
-		  private String getJSONString(HttpServletRequest request) {
-		    //故意构造一个数组，使返回的数据为json数组，数据更复杂些
-		    List<Map<String, Object>> datas = new ArrayList<Map<String, Object>>(5);
-		    Map<String, Object> map1 = new HashMap<String, Object>(10);
-		    //可以获得ajax请求中的参数
-		    map1.put("a", request.getParameter("a"));
-		    map1.put("b", request.getParameter("b"));
-		    map1.put("c", request.getParameter("c"));
-		    datas.add(map1);
-		    //故意构造一个数组，使返回的数据为json数组，数据更复杂些
-		    Map<String, Object> map2 = new HashMap<String, Object>(10);
-		    map2.put("a", "11");
-		    map2.put("b", "22");
-		    map2.put("c", "33");
-		    datas.add(map2);
-		    String jsonResult = JSON.toJSONString(datas);
-		    return jsonResult;
-		  }
-
-		  /**
-		   * 通过PrintWriter将响应数据写入response，ajax可以接受到这个数据
-		   * 
-		   * @param response
-		   * @param data 
-		   */
-		  private void renderData(HttpServletResponse response, String data) {
-		    PrintWriter printWriter = null;
-		    try {
-		      printWriter = response.getWriter();
-		      printWriter.print(data);
-		    } catch (IOException ex) {
-		      System.out.println("renderData Error");
-		    } finally {
-		      if (null != printWriter) {
-		        printWriter.flush();
-		        printWriter.close();
-		      }
-		    }
-		  }
 
 }

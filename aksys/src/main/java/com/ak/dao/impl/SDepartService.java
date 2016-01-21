@@ -62,5 +62,9 @@ public class SDepartService{
 		return sdepartRepository.findOne(id);
 
 	}
+	
+	public List<SDepart> findByFname(String fname){
+		return sdepartRepository.findByFname(fname);
+	}
 
 }

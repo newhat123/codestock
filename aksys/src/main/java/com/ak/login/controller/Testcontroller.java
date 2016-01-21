@@ -12,9 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ak.dao.impl.SDepartService;
+import com.ak.entity.SDepart;
+import com.ak.pub.Appctx;
 import com.alibaba.fastjson.JSON;
 
 
@@ -63,6 +67,44 @@ public class Testcontroller {
 		String id = request.getParameter("id");
 		System.out.println("hello3 action:" + id);
 		return "helloa";
+	}
+	
+	
+	
+	@RequestMapping(value = "/guests/{surname}", method = RequestMethod.GET)
+	public String showGuestList(Model model, @PathVariable("surname") String surname) {
+		System.out.println("with param");
+		SDepartService sd = (SDepartService) Appctx.ctx.getBean("sdepartService");		
+	    model.addAttribute("guests", sd.findByFname(surname));
+	    return "fragments/sysfrags::resultsList";
+	}
+
+	@RequestMapping(value = "/guests", method = RequestMethod.GET)
+	public String showGuestList(Model model) {		
+		SDepartService sd = (SDepartService) Appctx.ctx.getBean("sdepartService");
+		List<SDepart> l=sd.getAll();
+		System.out.println(l.size());
+	    model.addAttribute("guests", l);
+	    return "fragments/sysfrags::resultsList";
+	}
+	
+	@RequestMapping(value = "/guests/edit")
+	public String editDepart(Model model) {		
+		SDepart sd=new SDepart();
+		sd.setFname("编辑框用的");
+	    model.addAttribute("depart", sd);
+	    return "fragments/sysfrags::depEditModel";
+	}
+	
+	@RequestMapping(value = "/guests/edited")
+	public String editedDepart(Model model) {		
+		SDepart sd=new SDepart();
+		sd.setFname("编辑框用的");
+		sd.setDid(123);
+		sd.setBref("bjkyd");
+		sd.setFtype(1);
+	    model.addAttribute("depart", sd);
+	    return "fragments/sysfrags::depEdited";
 	}
 	
 	
