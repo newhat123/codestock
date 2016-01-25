@@ -1,0 +1,27 @@
+/*数据显示表格的顶部，下面留白20*/
+.tableheader {
+	border-top: 1px solid #c0c0c0;
+	padding-top: 20px;
+}
+/*数据显示表格的内容部分*/
+.tablebody {
+	border-bottom: 1px solid #c0c0c0;
+	padding-top: 8px;
+	padding-bottom: 3px;
+}
+/*调整控件行间距用的，底部留空*/
+.rowbottom{
+	margin-bottom:3px;
+}
+/*调整部件行间距用的，顶部留空*/
+.rowtop{
+	margin-top:3px;
+}
+/*页脚，版权部分用的。*/
+.footer{
+	border-top:1px solid #c0c0c0;
+	width:100%;
+	text-align:center;
+	margin-top:15px;
+	padding-top:3px;
+}

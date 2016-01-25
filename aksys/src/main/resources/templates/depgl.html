@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta th:replace="header::[/meta]" />
+<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+	type="text/css" media="all" href="../static/css/common.css" />
+<link th:replace="fragments/select::[/[@type^='text']]" rel="stylesheet"
+	type="text/css" media="all" href="../static/css/common.css" />
+<link th:replace="fragments/jsvalidate::[/[@type^='text']]"
+	rel="stylesheet" type="text/css" media="all"
+	href="../static/css/common.css" />
+
+<title>机构注册</title>
+
+</head>
+<!-- 和sysfrags的resultsList depEdited以及后台的
+@RequestMapping("/depgl") 
+@RequestMapping(value = "/guests")
+@RequestMapping(value = "/guests/edited/{did}/{fname}/{ftype}/{bref}")
+公共构成完整的Ajax编辑功能
+ -->
+<body>
+	<ul class="nav nav-tabs" th:include="header :: Navibar">
+	</ul>
+	<br />
+	<br />
+
+	<div class="container" id="depList"></div>
+
+
+	<div id="myModal" class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<form id="editform" class="form-signin">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+					</div>
+					<div class="modal-body">
+
+						<input type="text" th:id="eddid" name="eddid" class="form-control"
+							style="display: none" /> <input type="text" th:id="edfname"
+							name="edfname" class="form-control rowbottom" placeholder="科室名称"
+							required="required" /> <select class="form-control selectpicker"
+							th:id="edftype" name="edftype">
+							<option th:each="isellist : ${isellists}"
+								th:value="${isellist.fname}" th:inline="text">[[${isellist.fname}]]</option>
+						</select> <input type="text" id="edbref" name="edbref"
+							class="form-control rowtop" placeholder="拼音缩写" />
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" th:id="edcancel" class="btn btn-default"
+							data-dismiss="modal">Close</button>
+						<button type="button" th:id="edsubmit" class="btn btn-primary"
+							onclick="Change()">Save changes</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div th:include="footer :: copy" class="footer"></div>
+	<script type="text/javascript">
+		$(function() {
+			//加载表格数据
+			url = '/guests';
+			$("#depList").load(url);
+			//绑定回车和取消键
+			$(document).keydown(function(event) {
+				if (event.keyCode == 13) {
+					$("#edsubmit").click();
+				} else {
+					if (event.keyCode == 27) {
+						$("#edcancel").click();
+					}
+				}
+			});
+			//编辑框显示后，设置焦点
+			$('#myModal').on('shown.bs.modal', function() {
+				$("#edfname").focus();// input 获得焦点
+				$("#edfname").select();
+			});
+		});
+
+		//给编辑框赋值并且显示编辑框
+		function P(o) {
+			var did = $(o).parent().parent().children().first().html();
+			$('#eddid').val($('#did' + did).html());
+			$('#edfname').val($('#fname' + did).html());
+			$('#edbref').val($('#bref' + did).html());
+			var ftypeval = $('#ftype' + did).html();
+			$("#edftype").selectpicker('val', ftypeval);
+			$('#myModal').modal('show');
+		}
+		//前台验证输入，并将数据提交到后台，刷新对应的数据行。
+		//老牛逼了。
+		function Change() {
+			var form = $("#editform");
+			form.validate({
+				rules : {
+					edfname : {
+						required : true
+					},
+					edbref : {
+						required : true
+					}
+				}
+			});
+
+			if (form.valid()) {
+				url = Csurl("/guests/edited?", new Array("did", "fname",
+						"ftype", "bref"));
+				$("#depBlock" + $("#eddid").val()).load(url);
+				$('#myModal').modal('hide');
+			}
+		}
+	</script>
+</body>
+</html>

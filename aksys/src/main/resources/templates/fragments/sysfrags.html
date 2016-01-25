@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+	type="text/css" media="all" href="../static/css/common.css" />
+
+</head>
+<!-- 用SDepart测试Ajax用的 -->
+<body>
+	<div class="row tableheader" th:fragment="resultsList"
+		th:unless="${#lists.isEmpty(sdeparts)}">
+
+		<div class="col-xs-12" th:each="sDepart : ${sdeparts}"
+			th:id="depBlock+ ${sDepart.did}">
+			<div th:fragment="depEdited" class="row tablebody">
+				<div th:id="did+${sDepart.did}" style="display: none" th:text="${sDepart.did}"></div>
+				<div th:id="fname+${sDepart.did}" class="col-xs-3" th:text="${sDepart.fname}">fname</div>
+				<div th:id="ftype+${sDepart.did}" class="col-xs-3" th:text="${sDepart.ftype}">ftype</div>				
+				<div th:id="bref+${sDepart.did}" class="col-xs-3" th:text="${sDepart.bref}">bref</div>
+				<div class="col-xs-3">
+					<a href="#" onclick="P(this);">编辑</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+
+	<div th:fragment="depEditModel" class="modal-dialog" role="document">
+		<form class="form-signin" th:action="@{/guests/edited}" method="post">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+
+					<input type="text" th:id="eddid" th:value="${sDepart.did}" name="eddid" class="form-control"
+						style="display: none" /> <input type="text" th:id="edfname"
+						name="edfname" class="form-control" placeholder="科室名称"
+						required="required" autofocus="autofocus"
+						th:value="${sDepart.fname}" /> <input type="text" th:id="edftype"
+						th:value="${sDepart.ftype}" name="edftype" class="form-control" placeholder="科室类型" /> <input
+						type="text" id="edbref" th:value="${sDepart.bref}" name="edbref" class="form-control"
+						placeholder="拼音缩写" />
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button"  class="btn btn-primary" onclick="Change()">Save
+						changes</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
