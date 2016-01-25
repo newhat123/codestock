@@ -69,28 +69,7 @@ public class LoginController {
 		return "login";
 	}
 
-	// public String depmg(List<SDepart> departs) 这种模式是不可行的。
-	// spring mvc 不能直接接收数组list参数， 必需把这个数组或list作为一个对象的属性接收， 如对象 A a;
-	// 有个list属性b然后页面可以通过b[0].name、b[0].xxx、b[1].xxx传值。 控制层方法参数必需是对象a;
-
-	@RequestMapping("/depmg")
-	public String depmg(Model model, Integer edit) {
-
-		
-			if (!model.containsAttribute("departs")) {
-				// trans = (TransObj) Appctx.ctx.getBean("transObj");
-				SDepartService sd = (SDepartService) Appctx.ctx.getBean("sdepartService");
-				Page<SDepart> pager = sd.getListWithPaging(0, 2);
-				List<SDepart> departs = pager.getContent();
-				// trans.setList(departs);
-				model.addAttribute("departs", departs);
-				System.out.println("NOT");
-			}else{
-				System.out.println("YES");
-			}
-		
-		return "depmg";
-	}	
+	
 
 	@RequestMapping("/orgreg")
 	public String orgreg(HttpServletRequest request) {

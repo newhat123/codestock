@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.ak.dao.impl.ISellistService;
 import com.ak.dao.impl.SDepartService;
 import com.ak.dao.impl.SUserService;
 import com.ak.entity.SDepart;
@@ -32,6 +33,9 @@ public class Application {
 //  	 System.out.println(l.size());
 //  	 l=sd.findByFname("办公室");
 //  	 System.out.println(l.size());
+  	   
+//  	     ISellistService is=(ISellistService)Appctx.ctx.getBean("isellistService");
+//  	     System.out.println(is.getSexList().size());
    }
 
 }

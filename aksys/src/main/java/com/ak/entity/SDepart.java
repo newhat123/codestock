@@ -1,5 +1,5 @@
 package com.ak.entity;
-// Generated 2016-1-3 9:10:50 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-1-23 15:20:40 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,14 +17,14 @@ public class SDepart implements java.io.Serializable {
 
 	private Integer did;
 	private String fname;
-	private Integer ftype;
+	private String ftype;
 	private String bref;
 	private Integer orgDid;
 
 	public SDepart() {
 	}
 
-	public SDepart(String fname, Integer ftype, String bref, Integer orgDid) {
+	public SDepart(String fname, String ftype, String bref, Integer orgDid) {
 		this.fname = fname;
 		this.ftype = ftype;
 		this.bref = bref;
@@ -52,12 +52,12 @@ public class SDepart implements java.io.Serializable {
 		this.fname = fname;
 	}
 
-	@Column(name = "ftype")
-	public Integer getFtype() {
+	@Column(name = "ftype", length = 10)
+	public String getFtype() {
 		return this.ftype;
 	}
 
-	public void setFtype(Integer ftype) {
+	public void setFtype(String ftype) {
 		this.ftype = ftype;
 	}
 

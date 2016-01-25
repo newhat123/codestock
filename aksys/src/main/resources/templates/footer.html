@@ -1,10 +1,14 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head >
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta th:replace="header::[/meta]" />
+<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+	type="text/css" media="all" href="../static/css/common.css" />
 </head>
   <body>  
-    <div th:fragment="copy">
+    <div th:fragment="copy" class="footer">
       &copy; 2011 The Good Thymes Virtual Grocery
     </div>
   

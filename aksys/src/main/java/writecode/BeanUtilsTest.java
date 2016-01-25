@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ak.entity.ILoginfo;
+import com.ak.entity.ISellist;
 import com.ak.entity.SDepart;
 import com.ak.entity.SHuman;
 import com.ak.entity.SModules;
@@ -27,7 +28,7 @@ public class BeanUtilsTest {
    
    	List<Class> list = new ArrayList<Class>();
    
-   	list.add(SModules.class);   	
+   	list.add(ISellist.class);   	
    
    	for (Class c : list) {			
    		BeanUtils beanUtils = new BeanUtils();

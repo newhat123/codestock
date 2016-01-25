@@ -5,7 +5,7 @@
 <head>
 <meta th:replace="header::[/meta]" />
 <link th:replace="header::[/[@type^='text']]" rel="stylesheet"
-	type="text/css" media="all" href="../static/css/gtvg.css" />
+	type="text/css" media="all" href="../static/css/common.css" />
 <title>机构注册</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 	<br />
 	<br />
 
-	<div id="depList"></div>
+	<div class="container" id="depList"></div>
 
 
 	<div id="myModal" class="modal fade" tabindex="-1" role="dialog"
@@ -23,32 +23,43 @@
 	</div>
 
 	<div th:include="footer :: copy"></div>
+	<script type="text/javascript">
+		$(function() {
+			//alert("Loaded");
+			url = '/guests';
+			$("#depList").load(url);
+
+		});
+
+		function P(o) {
+			//alert($(o).closest('td').prev().html());
+			//alert($(o).parent().prev().html());
+
+			/* $("#eddid").val($(o).closest('td').prev().prev().prev().prev().html());
+			$("#edfname").val($(o).closest('td').prev().prev().prev().html());
+			$("#edftype").val($(o).closest('td').prev().prev().html());
+			$("#edbref").val($(o).closest('td').prev().html()); */
+
+			//alert($(o).parent().parent().children().first().html());
+			var did = $(o).parent().parent().children().first().html();
+			url = '/guests/edit/' + did;
+			$('#myModal').modal('show');
+			$("#depEdit").load(url);
+		}
+
+		function Change() {
+			url = '/guests/edited/';
+			url+=$("#eddid").val()+'/';
+			url+=$("#edfname").val()+'/';
+			url+=$("#edftype").val()+'/';
+			url+=$("#edbref").val();
+			
+			$("#depBlock"+$("#eddid").val()).load(url);
+			$('#myModal').modal('hide'); 
+			
+		}
+	</script>
 </body>
-<script type="text/javascript">
-	$(function() {
-		url = '/guests';
-		$("#depList").load(url);
-	});
 
-	function P(o) {
-		//alert($(o).closest('td').prev().html());
-		//alert($(o).parent().prev().html());
-
-		/* $("#eddid").val($(o).closest('td').prev().prev().prev().prev().html());
-		$("#edfname").val($(o).closest('td').prev().prev().prev().html());
-		$("#edftype").val($(o).closest('td').prev().prev().html());
-		$("#edbref").val($(o).closest('td').prev().html()); */
-
-		url = '/guests/edit';
-		$('#myModal').modal('show');
-		$("#depEdit").load(url);
-	}
-	
-	function Change(){
-		url = '/guests/edited';		
-		$("#depBlock1").load(url);
-		$('#myModal').modal('hide');
-	}
-</script>
 
 </html>
