@@ -3,8 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta th:replace="header::[/meta]" />
-<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+<meta th:replace="fragments/header::[/meta]" />
+<link th:replace="fragments/header::[/[@type^='text']]" rel="stylesheet"
 	type="text/css" media="all" href="../static/css/gtvg.css" />
 <title>Insert title here</title>
 </head>
@@ -13,6 +13,6 @@
 	This is my hello page.
 	<p th:text="'name:'+${name}">Name area</p>
 	<p th:text="'value:'+${string}">Value area</p>
-	<div th:include="footer :: copy"></div>
+	<div th:include="fragments/footer :: copy"></div>
 </body>
 </html>

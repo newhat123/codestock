@@ -3,8 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta th:replace="header::[/meta]" />
-<link th:replace="header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
+<meta th:replace="fragments/header::[/meta]" />
+<link th:replace="fragments/header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
 <title>Getting Started: Serving Web Content</title>
 <!-- 包含调用摄像头的js代码 -->
 <script type="text/javascript" src="../static/js/mapp.js"  th:src="@{/js/mapp.js}"></script>
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<!--内含文件上传测试代码，需指定enctype="multipart/form-data" input的name可以在Controller中直接使用提取文件。-->
-	<form action="#" th:action="@{/user}" th:object="${user}" enctype="multipart/form-data" method="post">
+	<form action="#" th:action="@{/learn/user}" th:object="${user}" enctype="multipart/form-data" method="post">
    <table  >
     <tr>
         <td  ><div><input type="text" name="fname"  th:field="*{fname}" th:class="${#fields.hasErrors('fname')}? fieldError"/>
@@ -35,6 +35,6 @@
 	<br/>
 <a href="#" onclick="$camera.invokeCamera()">调用摄像头</a>	
 	
-	<div th:include="footer :: copy"></div>
+	<div th:include="fragments/footer :: copy"></div>
 </body>
 </html>

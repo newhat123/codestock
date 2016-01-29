@@ -3,8 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta th:replace="header::[/meta]" />
-<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+<meta th:replace="fragments/header::[/meta]" />
+<link th:replace="fragments/header::[/[@type^='text']]" rel="stylesheet"
 	type="text/css" media="all" href="../static/css/common.css" />
 <link th:replace="fragments/select::[/[@type^='text']]" rel="stylesheet"
 	type="text/css" media="all" href="../static/css/common.css" />
@@ -18,19 +18,16 @@
 <!-- 和sysfrags的resultsList depEdited以及后台的
 @RequestMapping("/depgl") 
 @RequestMapping(value = "/guests")
-@RequestMapping(value = "/guests/edited/{did}/{fname}/{ftype}/{bref}")
+@RequestMapping(value = "/guests/edited")
 公共构成完整的Ajax编辑功能
  -->
 <body>
-	<ul class="nav nav-tabs" th:include="header :: Navibar">
-	</ul>
-	<br />
 	<br />
 
 	<div class="container" id="depList"></div>
 
 
-	<div id="myModal" class="modal fade" tabindex="-1" role="dialog"
+	<div id="myModal" class="modal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<form id="editform" class="form-signin">
@@ -66,11 +63,11 @@
 		</div>
 	</div>
 
-	<div th:include="footer :: copy" class="footer"></div>
+	<div th:include="fragments/footer :: copy" class="footer"></div>
 	<script type="text/javascript">
 		$(function() {
 			//加载表格数据
-			url = '/guests';
+			url = '/learn/guests';
 			$("#depList").load(url);
 			//绑定回车和取消键
 			$(document).keydown(function(event) {
@@ -115,7 +112,7 @@
 			});
 
 			if (form.valid()) {
-				url = Csurl("/guests/edited?", new Array("did", "fname",
+				url = Csurl("/learn/guests/edited?", new Array("did", "fname",
 						"ftype", "bref"));
 				$("#depBlock" + $("#eddid").val()).load(url);
 				$('#myModal').modal('hide');

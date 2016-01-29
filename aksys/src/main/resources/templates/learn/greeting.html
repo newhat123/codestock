@@ -3,8 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head> 
-<meta th:replace="header::[/meta]" />
-<link th:replace="header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
+<meta th:replace="fragments/header::[/meta]" />
+<link th:replace="fragments/header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,6 +12,6 @@
 <body>
     <p th:text="'Hello, ' + ${name} + '!'" />
     
-<div th:include="footer :: copy"></div>
+<div th:include="fragments/footer :: copy"></div>
 </body>
 </html>

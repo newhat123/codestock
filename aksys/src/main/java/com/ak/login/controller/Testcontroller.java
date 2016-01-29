@@ -29,7 +29,7 @@ import com.alibaba.fastjson.JSON;
 //这是用来测试页面参数传递用的
 //实际项目中用不到的
 @Controller
-@RequestMapping("/")
+@RequestMapping("/learn")
 public class Testcontroller {
 	
 	@Autowired
@@ -51,7 +51,7 @@ public class Testcontroller {
 	@RequestMapping(value = "/helloa")
 	public String helloa(int id) {// getParameter()的方式
 		System.out.println("hello action:" + id);
-		return "helloa";
+		return "/learn/helloa";
 	}
 
 	// 返回页面参数的第一种方式,在形参中放入一个map
@@ -59,7 +59,7 @@ public class Testcontroller {
 	public String hello1(int id, Map<String, Object> map) {
 		System.out.println("hello1 action:" + id);
 		map.put("name", "huangjie");
-		return "helloa";
+		return "/learn/helloa";
 	}
 
 	// 返回页面参数的第二种方式,在形参中放入一个Model
@@ -69,7 +69,7 @@ public class Testcontroller {
 		model.addAttribute("name", "huangjie");
 		// 这个只有值没有键的情况下,使用Object的类型作为key,String-->string
 		model.addAttribute("ok");
-		return "helloa";
+		return "/learn/helloa";
 	}
 
 	// 得到request,response,session等,只要在方法形参中声明参数即可
@@ -77,7 +77,7 @@ public class Testcontroller {
 	public String hello3(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		System.out.println("hello3 action:" + id);
-		return "helloa";
+		return "/learn/helloa";
 	}
 
 	/* 这是和userreg.html配合，形成搜索后部分刷新页面的Ajax功能的代码
@@ -88,7 +88,7 @@ public class Testcontroller {
 		System.out.println("with param");
 		SDepartService sd = (SDepartService) Appctx.ctx.getBean("sdepartService");
 		model.addAttribute("guests", sd.findByFname(surname));
-		return "fragments/sysfrags::resultsList";
+		return "/fragments/sysfrags::resultsList";
 	}
 	
 /*	
@@ -106,7 +106,7 @@ public class Testcontroller {
 		model.addAttribute("user", user);
 		
 		model.addAttribute("isellists", isellistService.getDepTypeList());
-		return "depgl";
+		return "/learn/depgl";
 	}
 	
 	
@@ -124,7 +124,7 @@ public class Testcontroller {
 	// 只能加入Model中传递。
 	@RequestMapping("/depmg")
 	public String depmg() {
-		return "depmg";
+		return "/learn/depmg";
 	}
 
 	@RequestMapping(value = "/guests")
@@ -133,7 +133,7 @@ public class Testcontroller {
 		List<SDepart> l = sd.getAll();
 		//System.out.println(l.size());
 		model.addAttribute("sdeparts", l);
-		return "fragments/sysfrags::resultsList";
+		return "/fragments/sysfrags::resultsList";
 	}
 	
 
@@ -146,20 +146,16 @@ public class Testcontroller {
 		// 前台始终得到用路径参数赋值的depart
 		// 加入model则可以返回任意值。
 		model.addAttribute("sDepart", sd.getById(depart.getDid()));
-		return "fragments/sysfrags::depEditModel";
+		return "/fragments/sysfrags::depEditModel";
 	}
 	
-	//@RequestMapping(value = "/guests/edited/{did,fname,ftype,bref}")
+	
 	//@RequestMapping(value = "/guests/edited/{did}/{fname}/{ftype}/{bref}")
-	//public String editedDepart(SDepart depart, Model model) {	
-	@RequestMapping(value = "/guests/edited")
-	/*public String editedDepart(@RequestParam Integer did,@RequestParam String fname,
-			@RequestParam String ftype,@RequestParam String bref,Model model) {*/
-	public String editedDepart(SDepart depart,Model model) {
-		
+	//上面这种方式无法传递空格，尤其是/ /这样的空格。
+	@RequestMapping(value = "/guests/edited")	
+	public String editedDepart(SDepart depart,Model model) {		
 		SDepartService sd = (SDepartService) Appctx.ctx.getBean("sdepartService");
 		SDepart sdd = sd.getById(depart.getDid());
-
 		sdd.setFname(depart.getFname());
 		sdd.setFtype(depart.getFtype());
 		sdd.setBref(depart.getBref());
@@ -171,7 +167,7 @@ public class Testcontroller {
 		// 加入model则可以返回任意值。
 		model.addAttribute("sDepart", sdd);		
 		//System.out.println(depart.getFname());
-		return "fragments/sysfrags::depEdited";
+		return "/fragments/sysfrags::depEdited";
 	}
 
 }

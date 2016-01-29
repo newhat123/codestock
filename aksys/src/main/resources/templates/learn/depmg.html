@@ -3,15 +3,13 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta th:replace="header::[/meta]" />
-<link th:replace="header::[/[@type^='text']]" rel="stylesheet"
+<meta th:replace="fragments/header::[/meta]" />
+<link th:replace="fragments/header::[/[@type^='text']]" rel="stylesheet"
 	type="text/css" media="all" href="../static/css/common.css" />
 <title>机构注册</title>
 </head>
 <body>
-	<ul class="nav nav-tabs" th:include="header :: Navibar">
-	</ul>
-	<br />
+	
 	<br />
 
 	<div class="container" id="depList"></div>
@@ -22,11 +20,11 @@
 		<div id="depEdit"></div>
 	</div>
 
-	<div th:include="footer :: copy"></div>
+	<div th:include="fragments/footer :: copy"></div>
 	<script type="text/javascript">
 		$(function() {
 			//alert("Loaded");
-			url = '/guests';
+			url = '/learn/guests';
 			$("#depList").load(url);
 
 		});
@@ -42,13 +40,13 @@
 
 			//alert($(o).parent().parent().children().first().html());
 			var did = $(o).parent().parent().children().first().html();
-			url = '/guests/edit/' + did;
+			url = '/learn/guests/edit/' + did;
 			$('#myModal').modal('show');
 			$("#depEdit").load(url);
 		}
-
+//这个已经取消了，不能传递纯空格。
 		function Change() {
-			url = '/guests/edited/';
+			url = '/learn/guests/edited/';
 			url+=$("#eddid").val()+'/';
 			url+=$("#edfname").val()+'/';
 			url+=$("#edftype").val()+'/';
