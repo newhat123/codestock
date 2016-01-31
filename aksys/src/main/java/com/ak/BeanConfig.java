@@ -14,6 +14,6 @@ public class BeanConfig {
 	public TransObj transObj() {
 		TransObj ts = new TransObj();
 		return ts;
-	}
+	}	
 
 }

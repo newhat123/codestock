@@ -1,5 +1,5 @@
 package com.ak.entity;
-// Generated 2016-1-3 9:10:50 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-1-30 10:56:38 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,12 +24,13 @@ public class SModules implements java.io.Serializable {
 	private Boolean sep;
 	private String icon;
 	private Boolean issys;
+	private String url;
 
 	public SModules() {
 	}
 
 	public SModules(String fname, String fcode, String cname, String parent, Boolean isdetail, Boolean sep, String icon,
-			Boolean issys) {
+			Boolean issys, String url) {
 		this.fname = fname;
 		this.fcode = fcode;
 		this.cname = cname;
@@ -38,6 +39,7 @@ public class SModules implements java.io.Serializable {
 		this.sep = sep;
 		this.icon = icon;
 		this.issys = issys;
+		this.url = url;
 	}
 
 	@Id
@@ -122,6 +124,15 @@ public class SModules implements java.io.Serializable {
 
 	public void setIssys(Boolean issys) {
 		this.issys = issys;
+	}
+
+	@Column(name = "url", length = 50)
+	public String getUrl() {
+		return this.url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

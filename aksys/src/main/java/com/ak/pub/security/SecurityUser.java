@@ -26,11 +26,19 @@ public class SecurityUser extends com.ak.entity.SUser implements org.springframe
    		this.setPassword(suser.getPassword());
    		this.setDob(suser.getDob());
    		this.setSRoles(suser.getSRoles());
+   		this.bref=suser.getBref();
    	}		
    }
    
+   private String bref;
+   
     
-   @Override
+   public String getBref() {
+	return bref;
+}
+
+
+@Override
    public Collection<? extends GrantedAuthority> getAuthorities() {
    	
    	Collection<GrantedAuthority> authorities = new ArrayList<>();

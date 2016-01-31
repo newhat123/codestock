@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
+import org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.AjaxThymeleafViewResolver;
@@ -88,7 +91,7 @@ public class RootConfig {
    	ResourceBundleMessageSource rBundleMessageSource = new ResourceBundleMessageSource();
    	rBundleMessageSource.setBasename("Messages");
    	return rBundleMessageSource;
-   }
+   }   
 
 }
 

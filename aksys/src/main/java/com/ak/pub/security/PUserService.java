@@ -2,8 +2,12 @@ package com.ak.pub.security;
 
 import com.ak.dao.SUserRepository;
 import java.util.List;
+
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ak.entity.SUser;
 
 
@@ -46,7 +50,12 @@ public class PUserService {
    
   
    public SUser findUserByEmail(String email) {
-   	return suserRepository.findUserByEmail(email);
+	   SUser user=null;
+	    user=suserRepository.findUserByEmail(email);
+	    /*if(user!=null && initChildren){  
+	    	Hibernate.initialize(user.getSRoles());  
+        }  */
+   	return user;
    }
 
 }
