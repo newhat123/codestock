@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta th:replace="fragments/header::[/meta]" />
+<link th:replace="fragments/header::[/[@type^='text']]"  rel="stylesheet" type="text/css" media="all"  href="../static/css/gtvg.css"/>
+
+<title>Spring Security Example</title>
+</head>
+<body>
+	<h1>Welcome!</h1>
+
+	<p>
+		Click <a th:href="@{/hello}">here</a> to see a greeting.
+	</p>
+<div th:include="fragments/footer :: copy"></div>
+</body>
+</html>
