@@ -18,7 +18,7 @@ import com.ak.entity.SUser;
 import com.ak.pub.powermg.Powermanager;
 import com.ak.pub.security.SecurityUser;
 
-public class MyInterceptor1 implements HandlerInterceptor {
+public class PowerInterceptor implements HandlerInterceptor {
 	
 //	@Autowired
 //	private Powermanager powermanager;
