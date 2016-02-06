@@ -64,10 +64,10 @@ public class SecurityUser extends com.ak.entity.SUser
 		return powerList;
 	}
 
-	public void setPowerList(List<SModules> powerList) {
-
-		this.powerList = powerList;
-	}
+//	public void setPowerList(List<SModules> powerList) {
+//
+//		this.powerList = powerList;
+//	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

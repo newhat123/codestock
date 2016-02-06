@@ -9,7 +9,7 @@ import com.ak.pub.MyInterceptor1;
 import com.ak.pub.powermg.Powermanager;
 
 @Configuration
-public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
+public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
 
 	@Override

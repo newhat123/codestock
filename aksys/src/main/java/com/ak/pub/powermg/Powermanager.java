@@ -36,7 +36,7 @@ public class Powermanager {
 	/*
 	 * 以user的id为键，存储用户权限列表
 	 */
-	private Map<Integer,List<SModules>> userpowers=new HashMap<Integer,List<SModules>>();
+	//private Map<Integer,List<SModules>> userpowers=new HashMap<Integer,List<SModules>>();
 	
 	//提供用户未登录的权限列表。
 	private List<SModules> sysPowerList=null;	
