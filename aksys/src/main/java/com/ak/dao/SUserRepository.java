@@ -15,6 +15,12 @@ public interface SUserRepository extends JpaRepository<SUser,Integer> {
     * */
    @Query("select u from SUser u where u.email=?1 and u.password=?2")
    SUser login(String email, String password);
+   
+   //@Query("select u from SUser u where u.email=?1")
+   //@Query(value="select u.did,u.org_did,u.bref,u.dob,u.email,u.hum_did,u.mobile,u.`password`,u.qq,r.fname from s_user u inner join s_role r on u.did=r.use_did where u.email=?1",nativeQuery = true)
+   @Query(value="select * from s_user u where u.email=?1",nativeQuery = true)
+   SUser test(String email);
+   
    /** @param email 
     * @param password
     * */

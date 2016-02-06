@@ -10,52 +10,48 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ak.entity.SUser;
 
-
 @Service("puserService")
 public class PUserService {
-   
 
-   @Autowired
-   private SUserRepository suserRepository;
-   
-   
-   public List<SUser> findAll() {
-   	return suserRepository.findAll();
-   }
-   
-   
-   public SUser create(SUser user) {
-   	return suserRepository.save(user);
-   }
-   
-  
-   public SUser findUserById(int id) {
-   	return suserRepository.findOne(id);
-   }
-   
-   
-   public SUser login(String email, String password) {
-   	return suserRepository.findByEmailAndPassword(email, password);
-   }
-   
-   
-   public SUser update(SUser user) {
-   	return suserRepository.save(user);
-   }
-   
-   
-   public void deleteUser(int id) {
-   	suserRepository.delete(id);
-   }
-   
-  
-   public SUser findUserByEmail(String email) {
-	   SUser user=null;
-	    user=suserRepository.findUserByEmail(email);
-	    /*if(user!=null && initChildren){  
-	    	Hibernate.initialize(user.getSRoles());  
-        }  */
-   	return user;
-   }
+	@Autowired
+	private SUserRepository suserRepository;
+
+	public List<SUser> findAll() {
+		return suserRepository.findAll();
+	}
+
+	public SUser create(SUser user) {
+		return suserRepository.save(user);
+	}
+
+	public SUser findUserById(int id) {
+		return suserRepository.findOne(id);
+	}
+
+	public SUser login(String email, String password) {
+		return suserRepository.findByEmailAndPassword(email, password);
+	}
+
+	public SUser test(String email) {
+		return suserRepository.test(email);
+	}
+
+	public SUser update(SUser user) {
+		return suserRepository.save(user);
+	}
+
+	public void deleteUser(int id) {
+		suserRepository.delete(id);
+	}
+
+	public SUser findUserByEmail(String email) {
+		SUser user = null;
+		user = suserRepository.findUserByEmail(email);
+		/*
+		 * if(user!=null && initChildren){
+		 * Hibernate.initialize(user.getSRoles()); }
+		 */
+		return user;
+	}
 
 }

@@ -24,19 +24,13 @@ public class CustomUserDetailsService implements org.springframework.security.co
    @Qualifier("puserService")
    private PUserService puserService;
    
-   @Autowired
-   private Powermanager powermanager;
-   
-  
+    
    @Override
    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
    	SUser user = puserService.findUserByEmail(userName);
    	if (user == null) {
    		throw new UsernameNotFoundException("UserName " + userName + " not found");
-   	}
-   	//System.out.println("Executed here!");
-   	List<SModules> l=powermanager.fetchPwlist(user.getDid());
-   	System.out.println("Size is:"+l.size());
+   	}	
    	
    	return new SecurityUser(user);
    }

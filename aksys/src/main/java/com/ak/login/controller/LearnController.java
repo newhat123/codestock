@@ -60,31 +60,16 @@ public class LearnController {
 		return user;		
 	}
 
-	@RequestMapping("/home")
-	public String home() {
-		return "/learn/home";
-	}
-	
-	@RequestMapping("/orgreg")
-	public String orgreg(HttpServletRequest request) {
-		// System.out.println("Login from hear!");
-		return "/learn/orgreg";
-	}
 
-	@RequestMapping("/userreg")
-	public String userreg(HttpServletRequest request) {
-		// System.out.println("Login from hear!");
-		return "/learn/userreg";
-	}
 
 	@RequestMapping("/hello")
 	public String hello() {
-		System.out.println("Come in here!");
+		//System.out.println("Come in here!");
 		SecurityContext ctx = SecurityContextHolder.getContext();
 		Authentication auth = ctx.getAuthentication();
 		if (auth.getPrincipal() instanceof UserDetails) {
 			SUser user = (SUser) auth.getPrincipal();
-			System.out.println(user.getEmail());
+			//System.out.println(user.getEmail());
 		}
 		return "/learn/hello";
 	}

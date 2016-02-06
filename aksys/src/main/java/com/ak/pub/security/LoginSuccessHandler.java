@@ -27,9 +27,9 @@ public class LoginSuccessHandler extends org.springframework.security.web.authen
        SUser userDetails = (SUser)authentication.getPrincipal();  
          
        //输出登录提示信息  
-       System.out.println("管理员 " + userDetails.getEmail() + " 登录");  
+       //System.out.println("管理员 " + userDetails.getEmail() + " 登录");  
    	//System.out.println("Okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-       System.out.println("IP :"+getIpAddress(request));
+       //System.out.println("IP :"+getIpAddress(request));
              
        super.onAuthenticationSuccess(request, response, authentication);  
    }

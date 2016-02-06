@@ -6,32 +6,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/pub")
-public class LoginController {
+@RequestMapping("/")
+public class CommonController {
 
 	// private SUserService tt;
 
 	@Autowired
 	private HttpServletRequest request;
-	
 
-	
-	@RequestMapping("/orgreg")
-	public String orgreg(HttpServletRequest request) {
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request) {
 		// System.out.println("Login from hear!");
-		return "/pub/orgreg";
-	}
-
-	@RequestMapping("/userreg")
-	public String userreg(HttpServletRequest request) {
-		// System.out.println("Login from hear!");
-		return "/pub/userreg";
+		return "/login";
 	}
 	
-	@RequestMapping("/home")
-	public String home() {
-		return "/pub/home";
+	@RequestMapping("/")
+	public String root() {
+		return "/pub/index";
 	}
-
-
+	
 }
